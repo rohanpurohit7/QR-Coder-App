@@ -1,5 +1,5 @@
 # QR-Coder-App
-This app generates QR Code stickers using iText API's and stamps them on successive pages of a PDF Document. You can encode sensitive information in the QR Code and retrieve it via a QR Code scanner app available via Apple iPhone App ecosystem.
+This app generates QR Code stickers using iText API's and stamps them on successive pages of a PDF Document. You can encode sensitive information in the QR Code and retrieve it via a QR Code scanner app available via Apple iPhone App ecosystem.Once the barcode is applied it can be scanned back via a scanner app right from your desktop screen and printed media likewise. 
 
 I have included a testbed folder and the necessary JAR files from iText if you want to modify the code.
 You can change the path to the source document and specify your stamped output. 
