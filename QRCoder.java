@@ -65,13 +65,13 @@ public class QRCoder {
             // uuid=getUUID();
             myList = buildQRCode("Rohan", "14307b brushwood way", "2022152482");
             canvas.beginText();
-//                canvas.addImage(getImage(uuid));
-            canvas.addImage(getImage2(myList)); // new method for Linkedlist
+//          canvas.addImage(getImage(uuid));
+           canvas.addImage(getImage2(myList));
+         //   canvas.addImage(getImage2(myList)); // new method for Linkedlist
             //canvas.setFontAndSize(BaseFont.createFont(), 7);
             //  canvas.showTextAligned(Element.ALIGN_BOTTOM,uuid,10,650,90);
-            canvas.endText();
-
-        stamper.close();}
+            canvas.endText();}
+        stamper.close();
         return baos.toByteArray();
     }
 
@@ -119,9 +119,10 @@ public class QRCoder {
 
     // Additional method to encode arraylist of contents
     private Image getImage2 (LinkedList<String> myList ) throws BadElementException{
-        buildQRCode("Rohan Purohit", "14307b brushwood way,centreville, va", "2022152482");//default parameters.
+      //default parameters.
         Image img2 = null;
         System.out.println("Get LinkedList with contents"+ myList.toString());
+      //  buildQRCode("Rohan Purohit", "14307b brushwood way,centreville, va", "2022152482");
         BarcodeQRCode qrcode2 = new BarcodeQRCode(myList.toString(),1,1,null);
         img2 = qrcode2.getImage();
         img2.setAbsolutePosition(10f, 735f);
