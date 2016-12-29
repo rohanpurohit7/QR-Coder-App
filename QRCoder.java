@@ -62,7 +62,7 @@ public class QRCoder {
 
                 PdfContentByte canvas = stamper.getUnderContent(i);
                // uuid=getUUID();
-                myList = buildQRCode("Rohan", "14307b brushwood way", "2022152482");
+                myList = buildQRCode("Rohan", "14307b brushwood way", "2022152482"); // default constructor for QR code contents
                 canvas.beginText();
 //                canvas.addImage(getImage(uuid));
 
@@ -95,6 +95,8 @@ public class QRCoder {
     String secondIndex;
     String thirdIndex;
 
+        
+        
             public  LinkedList<String> buildQRCode(String firstIndex, String secondIndex, String thirdIndex){
             LinkedList<String> myList = new LinkedList<>();
             Scanner scanner = new Scanner(System.in);
