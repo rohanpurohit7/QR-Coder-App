@@ -6,3 +6,5 @@ You can change the path to the source document and specify your stamped output.
 I have modified the code to have a scanner object take in input for a list of data like Name, Address and Phone Number field which you will find encoded within the barcode. Once encoded, find the resulting document in the test bed folder and use QR reader mobile app to decipher the encrypted information.
 
 iText provides an API that allows us to create barcode images and apply these as a sticker over the PDF document of our choice. This is different from what Adobe Livecycle or any other barcoding solution does. Livecycle works by changing the document XML subassembly and embedding the barcode within the xml structure of the document rather than using a sticker approach(much easier way). iText is a cool API and QR Code barcodes are just one symbology of barcodes it supports. It does many others as well, PDF417, code39. etc. 
+
+*My QRCoder app works best with pages sized 8.50x 11.00 inches.Or standard A4 paper sized document files. The positioning of the barcode is based on those dimensions. If you want different sizes of papers you have to tweak the barcode positioning code. 
