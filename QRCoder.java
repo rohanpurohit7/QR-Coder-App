@@ -2,11 +2,12 @@ package com.Rohan;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.*;
 
 import java.io.*;
+import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.UUID;
 
 /**
@@ -18,8 +19,8 @@ import java.util.UUID;
 public class QRCoder {
 
         /** The resulting PDF. */
-        private static final String RESULT = "C://Users//Rohan//Desktop//itext jars/stampedQRCodedDocument.pdf";
-        private static final String SRC = "C://Users//Rohan//Desktop//itext jars/RohanPurohitResumeDec2016unprocessed.pdf";
+        private static final String RESULT = "C://Users//Rohan//Desktop//itextTestBed+Jars/stampedQRCodedDocument2.pdf";
+        private static final String SRC = "C://Users//Rohan//Desktop//itextTestBed+Jars/RohanPurohitResumeDec2016unprocessed.pdf";
         /**
          * Generates a PDF file with different types of barcodes.
          *
@@ -54,16 +55,20 @@ public class QRCoder {
             ByteArrayOutputStream baos =new ByteArrayOutputStream();
             PdfReader reader = new PdfReader(bais);
             PdfStamper stamper = new PdfStamper(reader, baos);
+            LinkedList<String> myList = new LinkedList<>();
 
-            String uuid=null;
+            //String uuid=null;
             for(int i=1; i<= reader.getNumberOfPages(); i++){
 
                 PdfContentByte canvas = stamper.getUnderContent(i);
-                uuid=getUUID();
+               // uuid=getUUID();
+                myList = buildQRCode("Rohan", "14307b brushwood way", "2022152482");
                 canvas.beginText();
-                canvas.addImage(getImage(uuid));
+//                canvas.addImage(getImage(uuid));
+
+                canvas.addImage(getImage2(myList)); // new method for Linkedlist
                 canvas.setFontAndSize(BaseFont.createFont(), 7);
-                canvas.showTextAligned(Element.ALIGN_BOTTOM,uuid,10,650,90);
+              //  canvas.showTextAligned(Element.ALIGN_BOTTOM,uuid,10,650,90);
                 canvas.endText();
             }
             stamper.close();
@@ -74,18 +79,60 @@ public class QRCoder {
             return UUID.randomUUID().toString();
         }
 
-        private Image getImage(String uuid) throws BadElementException{
-            Image img=null;
-            System.out.println("get barcode with uuid  "+uuid);
-            BarcodeQRCode qrcode = new BarcodeQRCode(uuid, 1, 1, null);
-            img = qrcode.getImage();
+       private Image getImage(String uuid) throws BadElementException{
+           Image img=null;
+           System.out.println("get barcode with uuid  "+uuid);
+           BarcodeQRCode qrcode = new BarcodeQRCode(uuid, 1, 1, null);
+           img = qrcode.getImage();
 
-            //this line is to position barcode
-            img.setAbsolutePosition(10f, 735f);
-            img.setRotationDegrees(90);
-            return img;
+           //this line is to position barcode
+           img.setAbsolutePosition(10f, 735f);
+           img.setRotationDegrees(90);
+           return img;}
+
+
+    String firstIndex;
+    String secondIndex;
+    String thirdIndex;
+
+            public  LinkedList<String> buildQRCode(String firstIndex, String secondIndex, String thirdIndex){
+            LinkedList<String> myList = new LinkedList<>();
+            Scanner scanner = new Scanner(System.in);
+
+            while ((this.firstIndex==null) &&(this.secondIndex ==null) && (this.thirdIndex==null) ) {
+                System.out.println("Please specify Name for QR Code:");
+                this.firstIndex = scanner.nextLine();
+
+
+                System.out.println("Please specify Address for QR Code");
+                this.secondIndex = scanner.nextLine();
+
+
+                System.out.println("Please specify Phone number for QR Code");
+                this.thirdIndex = scanner.nextLine();
+
+                myList.add(0, this.firstIndex);
+                myList.add(1, this.secondIndex);
+                myList.add(2, this.thirdIndex);
+            }
+            return myList;
+    }
+
+            // Additional method to encode LinkedList of information
+            private Image getImage2 (LinkedList<String> myList ) throws BadElementException{
+               buildQRCode("Rohan Purohit", "14307b brushwood way,centreville, va", "2022152482");//default parameters.
+                Image img2 = null;
+                System.out.println("Get LinkedList with contents"+ myList.toString());
+                BarcodeQRCode qrcode2 = new BarcodeQRCode(myList.toString(),1,1,null);
+                img2 = qrcode2.getImage();
+                img2.setAbsolutePosition(10f, 735f);
+                img2.setRotationDegrees(90);
+                return img2;
+    }
 
         }
 
-    }
+
+
+
 
