@@ -19,8 +19,9 @@ import java.util.UUID;
 public class QRCoder {
 
     /** The resulting PDF. */
-    private static final String RESULT = "C://Users//Rohan//Desktop//itextTestBed+Jars/stampedQRCodedDocument2.pdf";
+    private static final String RESULT = "C://Users//Rohan//Desktop//itextTestBed+Jars/stampedQRCodedDocument3.pdf";
     private static final String SRC = "C://Users//Rohan//Desktop//itextTestBed+Jars/RohanPurohitResumeDec2016unprocessed.pdf";
+    LinkedList<String> myList = new LinkedList<>();
     /**
      * Generates a PDF file with different types of barcodes.
      *
@@ -32,6 +33,7 @@ public class QRCoder {
     public static void main(String[] args) throws IOException,
             DocumentException {
         QRCoder ab= new QRCoder();
+
         byte[] inputByteArray=ab.getBytesFromFile(SRC);
         ab.writeBytestoFile(RESULT, ab.stampPdf(inputByteArray));
     }
@@ -55,23 +57,21 @@ public class QRCoder {
         ByteArrayOutputStream baos =new ByteArrayOutputStream();
         PdfReader reader = new PdfReader(bais);
         PdfStamper stamper = new PdfStamper(reader, baos);
-        LinkedList<String> myList = new LinkedList<>();
+
 
         //String uuid=null;
         for(int i=1; i<= reader.getNumberOfPages(); i++){
-
             PdfContentByte canvas = stamper.getUnderContent(i);
             // uuid=getUUID();
             myList = buildQRCode("Rohan", "14307b brushwood way", "2022152482");
             canvas.beginText();
 //                canvas.addImage(getImage(uuid));
-
             canvas.addImage(getImage2(myList)); // new method for Linkedlist
-            canvas.setFontAndSize(BaseFont.createFont(), 7);
+            //canvas.setFontAndSize(BaseFont.createFont(), 7);
             //  canvas.showTextAligned(Element.ALIGN_BOTTOM,uuid,10,650,90);
             canvas.endText();
-        }
-        stamper.close();
+
+        stamper.close();}
         return baos.toByteArray();
     }
 
@@ -96,7 +96,6 @@ public class QRCoder {
     String thirdIndex;
 
     public  LinkedList<String> buildQRCode(String firstIndex, String secondIndex, String thirdIndex){
-        LinkedList<String> myList = new LinkedList<>();
         Scanner scanner = new Scanner(System.in);
 
         while ((this.firstIndex==null) &&(this.secondIndex ==null) && (this.thirdIndex==null) ) {
