@@ -122,7 +122,7 @@ public class QRCoder {
       //default parameters.
         Image img2 = null;
         System.out.println("Get LinkedList with contents"+ myList.toString());
-      //  buildQRCode("Rohan Purohit", "14307b brushwood way,centreville, va", "2022152482");
+      //  buildQRCode("Rohan Purohit", "Address XYZ", "123456789");
         BarcodeQRCode qrcode2 = new BarcodeQRCode(myList.toString(),1,1,null);
         img2 = qrcode2.getImage();
         img2.setAbsolutePosition(10f, 735f);
