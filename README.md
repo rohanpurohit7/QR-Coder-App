@@ -9,4 +9,4 @@ iText provides an API that allows us to create barcode images and apply these as
 
 *My QRCoder app works best with pages sized 8.50x 11.00 inches.Or standard A4 paper sized document files. The positioning of the barcode is based on those dimensions. If you want to add barcodes to different sizes of papers you have to tweak the barcode positioning code. 
 
-*Please note that the size of the QR code changes relative to the amount of information you are trying to encode.If you need to encode a lot of information, i.e hundreds of lines you need to keep in mind the size of your QR code and need to position your QR code accordingly for optimum scanback of the information via a mobile phone. 
+*Please note that the size of the QR code changes relative to the amount of information you are trying to encode.If you need to encode a lot of information, i.e hundreds of lines you need to keep in mind the size of your QR code and need to position your QR code accordingly for optimal scanback of the information via a mobile phone. 
