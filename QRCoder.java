@@ -63,7 +63,7 @@ public class QRCoder {
         for(int i=1; i<= reader.getNumberOfPages(); i++){
             PdfContentByte canvas = stamper.getUnderContent(i);
             // uuid=getUUID();
-            myList = buildQRCode("Rohan", "14307b brushwood way", "2022152482");
+            myList = buildQRCode("Rohan", "Random street", "123456789");
             canvas.beginText();
 //          canvas.addImage(getImage(uuid));
            canvas.addImage(getImage2(myList));
